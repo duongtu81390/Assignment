@@ -1,0 +1,44 @@
+<app-home></app-home>
+<div class="container">
+    <div class="row ">
+        <div class="col-9">
+            <div class="row">
+                <div class="col-6">
+                    <div class="card-deck"
+                        *ngFor='let sub of subject | paginate: { itemsPerPage: ipp, currentPage: cp } ; odd as isOdd'>
+                        <div class="card" *ngIf="isOdd">
+                            <img src="../../assets/images/{{sub.Logo}}" class="card-img-top">
+                            <div class="card-body">
+                                <a [routerLink]="['/test',sub.Id]">{{sub.Name}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card-deck"
+                        *ngFor='let sub of subject | paginate: { itemsPerPage: ipp, currentPage: cp } ; even as isEven'>
+                        <div class="card" *ngIf="isEven">
+                            <img src="../../assets/images/{{sub.Logo}}" class="card-img-top">
+                            <div class="card-body">
+                                <a [routerLink]="['/test',sub.Id]">{{sub.Name}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding-left: 350px">
+                    <button type="button" class="btn btn-primary" (click)="First()"><i
+                            class="fa fa-arrow-up"></i></button>
+                    <button type="button" class="btn btn-primary" (click)="Previous()"> <i
+                            class="fa fa-arrow-left"></i></button>
+                    <button type="button" class="btn btn-primary" (click)="Next()"><i
+                            class="fa fa-arrow-right"></i></button>
+                    <button type="button" class="btn btn-primary" (click)="Last()"><i
+                            class="fa fa-arrow-down"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <app-detail></app-detail>
+        </div>
+
+    </div>
