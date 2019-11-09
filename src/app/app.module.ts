@@ -15,7 +15,10 @@ import { EditComponent } from './edit/edit.component';
 import { DetailComponent } from './detail/detail.component';
 import { TestComponent } from './test/test.component';
 import { TestDetailComponent } from './test-detail/test-detail.component';
-
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import { ForgotpwComponent } from './forgotpw/forgotpw.component';
+import { EditDetailComponent } from './edit-detail/edit-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,23 +33,29 @@ import { TestDetailComponent } from './test-detail/test-detail.component';
     EditComponent,
     DetailComponent,
     TestComponent,
-    TestDetailComponent
+    TestDetailComponent,
+    ForgotpwComponent,
+    EditDetailComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     NgxPaginationModule,
+    HttpClientModule,
     RouterModule.forRoot([ 
       { path: '', 	component: HomeComponent },
       { path: 'intro', 	component: IntroComponent }, 
       {path: 'change', component:ChangepwComponent},
       {path: 'contact', component:ContactComponent},
       {path: 'edit', component:EditComponent},
+      {path: 'edit/:username', component:EditDetailComponent},
       {path: 'feedback', component:FeedbackComponent},
       {path: 'login', component:LoginComponent},
       {path: 'qna', component:QnAComponent},
       {path: 'signup', component:SignupComponent},
       {path: 'test', component:TestComponent},
-      { path: '**', component: TestDetailComponent },
+      {path: 'forgot', component:ForgotpwComponent},
+      { path: 'test/:id', component: TestDetailComponent },
     ]) 
     
   ],
