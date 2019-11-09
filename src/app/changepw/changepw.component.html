@@ -1,22 +1,16 @@
-<app-home></app-home>
-<div class="container">
-    <div class="row ">
-        <div class="col-9">
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-              </div><div class="form-group">
-                <label for="exampleInputPassword1">New Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Confirm New Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-              </div>
-              <button type="button" class="btn btn-primary">Change</button>
-        </div>
-        <div class="col-3">
-            <app-detail></app-detail>
-        </div>
-    </div>
+<div class="form-group">
+  <label for="exampleInputEmail1">Tên đăng nhập</label>
+  <input type="text" class="form-control" [(ngModel)]="userName" [ngModelOptions]="{standalone: true}">
 </div>
+<div class="form-group">
+  <label for="exampleInputPassword1">Mật khẩu</label>
+  <input type="password" class="form-control" [(ngModel)]="Password" [ngModelOptions]="{standalone: true}">
+</div><div class="form-group">
+  <label for="exampleInputPassword1">Mật khẩu mới</label>
+  <input type="password" class="form-control" [(ngModel)]="nPassword" [ngModelOptions]="{standalone: true}">
+</div>
+<div class="form-group">
+  <label for="exampleInputPassword1">Nhập lại mật khẩu</label>
+  <input type="password" class="form-control" [(ngModel)]="cPassword" [ngModelOptions]="{standalone: true}">
+</div>
+<button type="button" class="btn btn-primary" (click)='changePass()'>Thay đổi</button>
