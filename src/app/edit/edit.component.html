@@ -1,15 +1,17 @@
-<app-home></app-home>
-<div class="container">
-    <div class="row ">
-        <div class="col-9">
-            <div class="form-group">
-                <label for="exampleInputPassword1">Change Email</label>
-                <input type="email" class="form-control" >
-              </div>
-              <button type="button" class="btn btn-primary">Change</button>
-        </div>
-        <div class="col-3">
-            <app-detail></app-detail>
-        </div>
-    </div>
+<form *ngIf="!check">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Tên đăng nhập</label>
+    <input type="text" class="form-control" [(ngModel)]="userNameToCheck" [ngModelOptions]="{standalone: true}">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1" >Password</label>
+    <input type="password" class="form-control" [(ngModel)]="passwordToCheck" [ngModelOptions]="{standalone: true}">
+  </div>
+
+  <br>
+  <button class="btn btn-primary" (click)='checkLogin()' >Submit</button>
+</form>
+<div style="text-align: center" *ngIf='check'>
+  <h5>Đăng nhập thành công</h5>
+  <a type="button" class="btn btn-primary" [routerLink]="['/edit',userNameToCheck]" >Chuyển đến trang chỉnh sửa</a>
 </div>
