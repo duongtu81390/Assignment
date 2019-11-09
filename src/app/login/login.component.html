@@ -1,25 +1,18 @@
-<app-home></app-home>
-<div class="container">
-  <div class="row ">
-    <div class="col-9">
-      <form>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" >
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" >
-        </div>
-        
-        <br>
-        <a type="button" class="btn btn-primary" [routerLink]="['/test']" >Submit</a>
-      </form>
-
-    </div>
-    <div class="col-3">
-      <app-detail></app-detail>
-    </div>
+<form *ngIf="!checklogin">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Tên đăng nhập</label>
+    <input type="text" class="form-control" [(ngModel)]="userNameToCheck" [ngModelOptions]="{standalone: true}">
   </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1" >Mật khẩu</label>
+    <input type="password" class="form-control" [(ngModel)]="passwordToCheck" [ngModelOptions]="{standalone: true}">
+  </div>
+
+  <br>
+  <button class="btn btn-primary" (click)='checkLogin()' >Submit</button>
+</form>
+
+<div style="text-align: center" *ngIf='checklogin'>
+  <h5>Đăng nhập thành công</h5>
+  <a type="button" class="btn btn-primary" [routerLink]="['/test']" >Chuyển đến trang thi</a>
 </div>

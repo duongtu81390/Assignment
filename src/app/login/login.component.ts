@@ -1,54 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-
+import {StudentService} from '../DAL/student.service'
+import {HttpClient} from '@angular/common/http'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  user = 
-  {
-    email: null,
-    password: null,
-    result:null
-  }
-  constructor() { }
-  listUser = [
-    {
-        "username": "teonv",
-        "password": "iloveyou",
-        "fullname": "Nguyễn Văn Tèo",
-        "email": "teonv@fpt.edu.vn",
-        "gender": "true",
-        "birthday": "1995-12-21",
-        "schoolfee": "1500000",
-        "marks": "0"
-    },
-    {
-        "username": "pheonv",
-        "password": "iloveyou",
-        "fullname": "Nguyễn Văn Chí Phèo",
-        "email": "pheonv@fpt.edu.vn",
-        "gender": "true",
-        "birthday": "1985-10-11",
-        "schoolfee": "2500000",
-        "marks": "0"
-    },
-    {
-        "username": "nopt",
-        "password": "iloveyou",
-        "fullname": "Phạm Thị Nở",
-        "email": "nopt@fpt.edu.vn",
-        "gender": "false",
-        "birthday": "1993-05-15",
-        "schoolfee": "2000000",
-        "marks": "0"
-    }
-]
-    checking:number;
-  ngOnInit() { 
   
+  constructor(private http : HttpClient, private stu: StudentService ) { }
+  url = './assets/db/Students.js';
+  checklogin :boolean = false;
+  
+  userNameToCheck: any;
+  passwordToCheck: any;
+  studentArray: any;
+  student: any
+  ngOnInit() {
+    this.getStudents().subscribe(data =>{
+      this.studentArray = data;
+    })
+    this.student = this.stu.getStudent();
+  }
+  getStudents(){
+    return this.http.get(this.url)
+  }
+  checkLogin(){
+    for(var student of this.studentArray){
+      if((this.userNameToCheck === student.username) && (this.passwordToCheck === student.password)){
+        this.checklogin = true
+      }
     }
+  }
   }
 
   
